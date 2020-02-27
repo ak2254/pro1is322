@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title> Products</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="products.css">
+</head>
+<body>
+<ul>
+    <li><a href="index.html" class="logo">Flower House</a></li>
+    <li><a class="active" href="index.html">Home</a></li>
+    <li><a href="product.html">Products</a></li>
+    <li><a href="is322pro1/contact.html">Contact</a></li>
+
+
+</ul>
+
+
+
+<div class="container" id="page-wrapper">
+
+    <div class="filter-wrapper">
+
+        <div class="form-group" style="margin-right: 20px;">
+            <label for="orderBy">Order By</label>
+            <select id="orderBy" name="orderBy">
+                <option value="title">Name (assending)</option>
+                <option value="title">Name(dessending)</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="published">Show Unpublished?</label>
+            <select id="published" name="published">
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div id="cards">
+    </div>
+
+
+</div>
+<script type="text/javascript" src="product.js"></script>
+
+</body>
+</html>
