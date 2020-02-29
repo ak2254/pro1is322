@@ -1,7 +1,4 @@
 
-
-
-
 const cards = [
     {title: "Alstroemerias", image: "images/104735alt_view1.jpg", price: 9.99},
 
@@ -44,3 +41,88 @@ function renderList (results) {
 }
 
 renderList(cards);
+
+
+
+
+
+
+
+function orderBy(sortValue) {
+    var sortedResults;
+if (sortValue === 'asc-name') {
+    sortedResults = cards.sort(function (a, b) {
+        var nameA = a.title.toUpperCase();
+        var nameB = b.title.toUpperCase();
+        var quest = nameA<nameB;
+        if (quest) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
+    });
+} else {
+    sortedResults = cards.sort(function (a, b) {
+        return a[sortValue] - b[sortValue];
+    });
+}
+renderList(sortedResults);
+}
+document.querySelector('#orderBy').addEventListener('change', function(event){
+    orderBy(event.target.value);
+});
+
+
+
+
+
+
+function orderdec(sortValue) {
+    var sortedResults;
+    if (sortValue === 'dsc-name') {
+        sortedResults = cards.sort(function (a, b) {
+            var nameA = a.title.toUpperCase();
+            var nameB = b.title.toUpperCase();
+            var question = nameA>nameB;
+            if (question) {
+                return -1;
+            }
+            else{
+                return 1;
+            }
+        });
+    } else {
+        sortedResults = cards.sort(function (a, b) {
+            return a[sortValue] - b[sortValue];
+        });
+    }
+    renderList(sortedResults);
+}
+document.querySelector('#orderBy').addEventListener('change', function(event){
+    orderdec(event.target.value);
+});
+
+
+
+function PriceRange (price) {
+    var priceRanges = {cheap: [1, 20], medium:[21, 40], expensive:[40, 60], exexpensive: [60, 200]};
+    var range = priceRanges[price];
+    var Results = cards.filter(function (row) {
+        var k = row.price > range[0];
+        var j = row.price< range[1];
+        return k && j;
+    });
+    if(!priceRanges){
+        return renderList(cards);
+    }
+
+    renderList(Results);
+}
+document.querySelector('#priceRange').addEventListener('change', function (event) {
+    PriceRange(event.target.value);
+});
+
+
+
+
